@@ -63,5 +63,4 @@ def EligibilityTraces(episodes, env_seed):
     plt.plot(sum_rewards, label="EligibilityTraces")
     plt.legend()
 
-    plt.savefig('images/frozen_lake_EligibilityTraces.png')
     return q

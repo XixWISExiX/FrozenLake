@@ -59,5 +59,4 @@ def QLearning(episodes, env_seed):
     plt.plot(sum_rewards, label="QLearning")
     plt.legend()
 
-    plt.savefig('images/frozen_lake_QLearning.png')
     return q

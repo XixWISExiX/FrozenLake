@@ -60,5 +60,4 @@ def SARSA(episodes, env_seed):
     plt.plot(sum_rewards, label="SARSA")
     plt.legend()
 
-    plt.savefig('images/frozen_lake_SARSA.png')
     return q
