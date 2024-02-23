@@ -2,7 +2,6 @@ import gymnasium as gym
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-# import pyautogui
 
 def seeModel(model, env_seed):
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="8x8", is_slippery=False, render_mode="human")
@@ -81,8 +80,8 @@ def visualize_policy(policy, name, size, env_array, env_seed):
     for i in range(1, size):
         plt.axhline(y=i - 0.5, color='black', linewidth=1)
         plt.axvline(x=i - 0.5, color='black', linewidth=1)
-    labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State'}
-    legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,3)]
+    labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State', 3: 'Path of Agent'}
+    legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,4)]
     plt.legend(handles=legend_patches, loc='upper right', bbox_to_anchor=(1.5, 1))
     plt.savefig('images/frozen_lake_{name}_policy.png'.format(name=name))
     plt.show()
@@ -119,8 +118,8 @@ def visualize_QTable(QTable, name, size, env_array, env_seed):
     for i in range(1, size):
         plt.axhline(y=i - 0.5, color='black', linewidth=1)
         plt.axvline(x=i - 0.5, color='black', linewidth=1)
-    labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State'}
-    legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,3)]
+    labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State', 3: 'Path of Agent'}
+    legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,4)]
     plt.legend(handles=legend_patches, loc='upper right', bbox_to_anchor=(1.5, 1))
     plt.savefig('images/frozen_lake_{name}_policy.png'.format(name=name))
     plt.show()
