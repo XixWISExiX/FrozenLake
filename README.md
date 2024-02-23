@@ -46,9 +46,11 @@ See the QLearning Policy
 ![The QLearning Policy](/images/frozen_lake_QLearning_policy.png)
 
 See the SARSA Policy
+
 ![The SARSA Policy](/images/frozen_lake_SARSA_policy.png)
 
 See the Eligibility Traces Policy
+
 ![The Eligibility Traces Policy](/images/frozen_lake_Eligibility%20Traces_policy.png)
 
 ## Description and Thoughts on each Model
