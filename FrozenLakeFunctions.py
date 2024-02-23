@@ -3,7 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
+
+
 def seeModel(model, env_seed):
+    """
+    This function allows for the user to see the model in action (the model must be a QTable).
+
+    Parameters:
+    model (np.array): The QTable model.
+    env_seed (string): The environment seed to load the correct environment.
+    """
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="8x8", is_slippery=False, render_mode="human")
     state = env.reset()[0]  # states: 0 to 63, 0=top left corner,63=bottom right corner
     terminated = False      # True when fall in hole or reached goal
@@ -14,7 +23,20 @@ def seeModel(model, env_seed):
         state = new_state
     env.close()
 
+
+
 def testModel(model, model_name, env_seed, tests, line_style=None):
+    """
+    This function tests the model to see if it works.
+    A plot of 1 means that it works. A plot of 0 means that it doesn't work.
+
+    Parameters:
+    model (np.array): The QTable model.
+    model_name (string): The model name.
+    env_seed (string): The environment seed to load the correct environment.
+    tests (int): The number of tests to make the model go through.
+    line_style (string): The linestyle for the Test Model Plot.
+    """
     rewards_per_episode = np.zeros(tests)
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="8x8", is_slippery=False, render_mode=None)
     for i in range(tests):
@@ -39,7 +61,16 @@ def testModel(model, model_name, env_seed, tests, line_style=None):
     plt.plot(rewards_per_episode, label=model_name, linestyle=line_style)
     plt.legend()
 
+
+
 def seeModelState(model, env_seed):
+    """
+    This function allows for the user to see the model in action (the model must be a state array).
+
+    Parameters:
+    model (np.array): The state array model.
+    env_seed (string): The environment seed to load the correct environment.
+    """
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="8x8", is_slippery=False, render_mode="human")
     done = False
     state = env.reset()[0]
@@ -48,7 +79,19 @@ def seeModelState(model, env_seed):
         state, _, done, _, _= env.step(action)
     env.close()
 
+
+
 def visualize_policy(policy, name, size, env_array, env_seed):
+    """
+    This function allows for the user to see the model in action (the model must be a state array).
+
+    Parameters:
+    policy (np.array): The policy of the given model (the state array).
+    name (string): Name of the Model.
+    size (int): The dimentions of a grid so if we have a 8x8 board, then size = 8.
+    env_array (np.array): Array representation of the environment so that it can be ploted.
+    env_seed (string): The environment seed to load the correct environment.
+    """
     env_array = findPolicyPath(env_array, policy, env_seed, size)
     env_array[size-1][size-1] = 2
     policy_grid = policy.astype(int).reshape(size, size)  # Convert policy values to integers and reshape into a 12x12 grid
@@ -87,7 +130,19 @@ def visualize_policy(policy, name, size, env_array, env_seed):
     plt.show()
     plt.close()
 
+
+
 def visualize_QTable(QTable, name, size, env_array, env_seed):
+    """
+    This function allows for the user to see the model in action (the model must be a QTable).
+
+    Parameters:
+    QTable (np.array): The QTable of the given model.
+    name (string): Name of the Model.
+    size (int): The dimentions of a grid so if we have a 8x8 board, then size = 8.
+    env_array (np.array): Array representation of the environment so that it can be ploted.
+    env_seed (string): The environment seed to load the correct environment.
+    """
     env_array = findQTablePath(env_array, QTable, env_seed, size)
     env_array[size-1][size-1] = 2
     policy_grid = np.zeros((size, size))
@@ -125,7 +180,16 @@ def visualize_QTable(QTable, name, size, env_array, env_seed):
     plt.show()
     plt.close()
 
+
+
 def seeEnv(env_seed, size):
+    """
+    This function allows for the user to see the environment on a plot.
+
+    Parameters:
+    env_seed (string): The environment seed to load the correct environment.
+    size (int): The dimentions of a grid so if we have a 8x8 board, then size = 8.
+    """
     plt_array = getBoard(env_seed, size)
            
     # Show the environment in a plot
@@ -146,7 +210,19 @@ def seeEnv(env_seed, size):
     plt.close()
     return plt_array
 
+
+
 def getBoard(env_seed, size):
+    """
+    This function gets the current environment in np.array representation. This function also acts like a refreash because it is seperate from other boards.
+
+    Parameters:
+    env_seed (string): The environment seed to load the correct environment.
+    size (int): The dimentions of a grid so if we have a 8x8 board, then size = 8.
+
+    Returns:
+    np.array: The current environment in np.array form.
+    """
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="12x12", is_slippery=False, render_mode='ansi')
     env.reset()
 
@@ -167,7 +243,20 @@ def getBoard(env_seed, size):
     return plt_array
      
 
+
 def findQTablePath(env_array, model, env_seed, size):
+    """
+    This function helps us shade the agents path into the plot (the model must be a QTable).
+
+    Parameters:
+    env_array (np.array): Array representation of the environment so that it can be ploted.
+    model (np.array): The QTable of the given model.
+    env_seed (string): The environment seed to load the correct environment.
+    size (int): The dimentions of a grid so if we have a 8x8 board, then size = 8.
+
+    Return:
+    np.array: The current environment in np.array form with the added path.
+    """
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="8x8", is_slippery=False, render_mode=None)
     state = env.reset()[0]  # states: 0 to 63, 0=top left corner,63=bottom right corner
     terminated = False      # True when fall in hole or reached goal
@@ -181,7 +270,20 @@ def findQTablePath(env_array, model, env_seed, size):
     return env_array
 
 
+
 def findPolicyPath(env_array, model, env_seed, size):
+    """
+    This function helps us shade the agents path into the plot (the model must be a state array).
+
+    Parameters:
+    env_array (np.array): Array representation of the environment so that it can be ploted.
+    model (np.array): The state array of the given model.
+    env_seed (string): The environment seed to load the correct environment.
+    size (int): The dimentions of a grid so if we have a 8x8 board, then size = 8.
+
+    Return:
+    np.array: The current environment in np.array form with the added path.
+    """
     env = gym.make("FrozenLake-v1", desc=env_seed, map_name="8x8", is_slippery=False, render_mode=None)
     done = False
     state = env.reset()[0]
