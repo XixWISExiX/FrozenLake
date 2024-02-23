@@ -126,7 +126,8 @@ def visualize_policy(policy, name, size, env_array, env_seed):
     labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State', 3: 'Path of Agent'}
     legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,4)]
     plt.legend(handles=legend_patches, loc='upper right', bbox_to_anchor=(1.43, 1))
-    plt.savefig('images/frozen_lake_{name}_policy.png'.format(name=name))
+    plt.tight_layout()
+    plt.savefig('images/frozen_lake_{name}_policy.png'.format(name=name), bbox_inches='tight')
     plt.show()
     plt.close()
 
@@ -176,7 +177,8 @@ def visualize_QTable(QTable, name, size, env_array, env_seed):
     labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State', 3: 'Path of Agent'}
     legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,4)]
     plt.legend(handles=legend_patches, loc='upper right', bbox_to_anchor=(1.43, 1))
-    plt.savefig('images/frozen_lake_{name}_policy.png'.format(name=name))
+    plt.tight_layout()
+    plt.savefig('images/frozen_lake_{name}_policy.png'.format(name=name), bbox_inches='tight')
     plt.show()
     plt.close()
 
@@ -205,7 +207,8 @@ def seeEnv(env_seed, size):
     labels = {0: 'Normal State', 1: 'Start State', 2: 'End State', -1: 'Hole State'}
     legend_patches = [mpatches.Patch(color=colors[i+1], label=labels[i]) for i in range(-1,3)]
     plt.legend(handles=legend_patches, loc='upper right', bbox_to_anchor=(1.43, 1))
-    plt.savefig('images/frozen_lake_environment.png')
+    plt.tight_layout()
+    plt.savefig('images/frozen_lake_environment.png', bbox_inches='tight')
     plt.show()
     plt.close()
     return plt_array
