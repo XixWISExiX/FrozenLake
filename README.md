@@ -28,7 +28,7 @@ To check out one model you can visit one of the 4 files, of which each holds a s
 Seeing how each model compares
 
 <!-- ![A plot showing the 3 action learning models](/images/frozen_lake_model_comparison.png){: width="500"} -->
-<img src="/images/frozen_lake_model_comparison.png" alt="A plot showing the 3 action learning models" width="500">
+<img src="/images/frozen_lake_model_comparison.png" alt="A plot showing the 3 action learning models" width="1000">
 
 ### Visualize the Current Environment
 
