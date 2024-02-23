@@ -26,19 +26,23 @@ To check out one model you can visit one of the 4 files, of which each holds a s
 ### Compare each Model
 
 Seeing how each model compares
+
 ![A plot showing the 3 action learning models](/images/frozen_lake_model_comparison.png)
 
 ### Visualize the Current Environment
 
 Seeing the given environment for each model
+
 ![The environment ploted](/images/frozen_lake_environment.png)
 
 ### Visualize each of the Model's Policies
 
 See the Dynamic Programming Policy
+
 ![The Dynamic Programming Policy](/images/frozen_lake_Dynamic%20Programming_policy.png)
 
 See the QLearning Policy
+
 ![The QLearning Policy](/images/frozen_lake_QLearning_policy.png)
 
 See the SARSA Policy
